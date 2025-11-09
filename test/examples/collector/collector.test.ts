@@ -4,7 +4,7 @@ import { describe, expect, it } from 'vitest'
 import { aliceCollector } from './alice'
 import { bobCollector } from './bob'
 
-describe('should', () => {
+describe('collector', () => {
   const messageChannel = new MessageChannel()
   const bobToAlice = createBirpc<AliceFunctions, BobFunctions>(
     bobCollector.functions,
@@ -31,7 +31,7 @@ describe('should', () => {
     },
   )
 
-  it('works', async () => {
+  it('register', async () => {
     expect(bobCollector.functions).toMatchInlineSnapshot(`
       {
         "getMoney": Promise {},
@@ -45,7 +45,9 @@ describe('should', () => {
         "getBalance": Promise {},
       }
     `)
+  })
 
+  it('calling', async () => {
     expect(await aliceToBob.getMoney()).toBe(50)
     expect(await bobToAlice.getBalance()).toBe(101)
 
@@ -55,7 +57,9 @@ describe('should', () => {
 
     expect(await bobToAlice.getAppleCount()).toBe(2)
     expect(await bobToAlice.getBalance()).toBe(107)
+  })
 
+  it('error', async () => {
     await expect(() => bobToAlice.buyApples(3))
       .rejects
       .toThrowErrorMatchingInlineSnapshot(`[Error: Insufficient apples]`)
@@ -64,8 +68,9 @@ describe('should', () => {
     await expect(() => aliceToBob.foo())
       .rejects
       .toThrowErrorMatchingInlineSnapshot(`[Error: [birpc] function "foo" not found]`)
+  })
 
-    // Call handlers directly
+  it('direct calling', async () => {
     expect(bobCollector.getHandler('getMoney')).toBeDefined()
     expect(
       await aliceCollector
