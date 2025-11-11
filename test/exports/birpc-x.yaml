@@ -1,0 +1,5 @@
+.:
+  createDefineWrapperWithContext: function
+  defineRpcFunction: function
+  getRpcHandler: function
+  RpcFunctionsCollectorBase: function

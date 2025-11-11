@@ -59,6 +59,7 @@ export class RpcFunctionsCollectorBase<
 > implements RpcFunctionsCollector<LocalFunctions, SetupContext> {
   public readonly definitions: Map<string, RpcFunctionDefinition<string, any, any, any, SetupContext>> = new Map()
   public readonly functions: LocalFunctions
+  private readonly _onChanged: ((id?: string) => void)[] = []
 
   constructor(
     public readonly context: SetupContext,
@@ -94,6 +95,7 @@ export class RpcFunctionsCollectorBase<
       throw new Error(`RPC function "${fn.name}" is already registered`)
     }
     this.definitions.set(fn.name, fn)
+    this._onChanged.forEach(cb => cb(fn.name))
   }
 
   update(fn: RpcFunctionDefinition<string, any, any, any, SetupContext>, force = false): void {
@@ -101,6 +103,17 @@ export class RpcFunctionsCollectorBase<
       throw new Error(`RPC function "${fn.name}" is not registered. Use register() to add new functions.`)
     }
     this.definitions.set(fn.name, fn)
+    this._onChanged.forEach(cb => cb(fn.name))
+  }
+
+  onChanged(fn: (id?: string) => void): () => void {
+    this._onChanged.push(fn)
+    return () => {
+      const index = this._onChanged.indexOf(fn)
+      if (index !== -1) {
+        this._onChanged.splice(index, 1)
+      }
+    }
   }
 
   async getHandler<T extends keyof LocalFunctions>(name: T): Promise<LocalFunctions[T]> {

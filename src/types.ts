@@ -20,6 +20,7 @@ export interface RpcFunctionsCollector<LocalFunctions, SetupContext = undefined>
   readonly definitions: Map<string, RpcFunctionDefinitionAnyWithContext<SetupContext>>
   register: (fn: RpcFunctionDefinitionAnyWithContext<SetupContext>) => void
   update: (fn: RpcFunctionDefinitionAnyWithContext<SetupContext>) => void
+  onChanged: (fn: (id?: string) => void) => (() => void)
 }
 
 export interface RpcFunctionSetupResult<
