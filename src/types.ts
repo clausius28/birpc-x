@@ -10,9 +10,10 @@ export type EntriesToObject<T extends readonly [string, any][]> = {
  * Type of the RPC function,
  * - static: A function that returns a static data, no arguments (can be cached and dumped)
  * - action: A function that performs an action (no data returned)
+ * - event: A function that emits an event (no data returned), and does not wait for a response
  * - query: A function that queries a resource
  */
-export type RpcFunctionType = 'static' | 'action' | 'query'
+export type RpcFunctionType = 'static' | 'action' | 'event' | 'query'
 
 export interface RpcFunctionsCollector<LocalFunctions, SetupContext = undefined> {
   context: SetupContext
