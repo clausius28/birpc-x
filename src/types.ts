@@ -12,6 +12,8 @@ export type EntriesToObject<T extends readonly [string, any][]> = {
  * - action: A function that performs an action (no data returned)
  * - event: A function that emits an event (no data returned), and does not wait for a response
  * - query: A function that queries a resource
+ *
+ * By default, the function is a query function.
  */
 export type RpcFunctionType = 'static' | 'action' | 'event' | 'query'
 
@@ -35,13 +37,13 @@ export interface RpcFunctionSetupResult<
 
 export interface RpcFunctionDefinition<
   NAME extends string,
-  TYPE extends RpcFunctionType,
+  TYPE extends RpcFunctionType = 'query',
   ARGS extends any[] = [],
   RETURN = void,
   CONTEXT = undefined,
 > {
   name: NAME
-  type: TYPE
+  type?: TYPE
   setup?: (context: CONTEXT) => Thenable<RpcFunctionSetupResult<ARGS, RETURN>>
   handler?: (...args: ARGS) => RETURN
   __resolved?: RpcFunctionSetupResult<ARGS, RETURN>
